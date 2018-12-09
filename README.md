@@ -8,6 +8,13 @@ This project requires **Python 3.x** and the following Python libraries installe
 - [matplotlib](http://matplotlib.org/)
 - [scikit-learn](http://scikit-learn.org/stable/)
 
+Use the following git command to copy the project to your local machine:
+
+```bash
+git clone https://github.com/cmarteepants/finding_donors.git
+```
+
+
 You will also need to have jupyter installed to run and execute an [iPython Notebook](http://ipython.org/notebook.html)
 
 To install the libraries, navigate to the top-level project directory 'finding_donors/' and run the following command:
