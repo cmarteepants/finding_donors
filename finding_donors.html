@@ -12620,21 +12620,24 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <li>Gradient Boosting Trees are harder to tune than Random Forests;</li>
 </ul>
 </li>
-<li>Reasons for candidacy: We have a large dataset, and we have a good number of predictors therefore gradient boosting is a viable choice.</li>
+<li>Reasons for candidacy: Gradient boosting classifiation allows people to go to the limits of what is possible given the dataset. For situations where the correlation amongst features and the target variable are not immediate apparent, gradient boosting has a good chance of finding them. Given that the dataset is not extensively large, experiments with hyperparameters are feasible. Compared to other algorithms, gradient boosting has a low bias and high variance.</li>
 </ul>
 <h4 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h4><ul>
 <li>Binomial logistic regression is used extensively in social sciences and marketing, such as for example predicting whether a customer will <a href="https://alpine.atlassian.net/wiki/spaces/V6/pages/108757216/Logistic+Regression+Use+Case+1">buy a product or not</a>.</li>
 <li>Strengths:<ul>
 <li>Quick training and prediction time;</li>
 <li>Performs well in cases where less features are known;</li>
+<li>Simple and easy to understand;</li>
+<li>It's linear classifier works well in most situations;</li>
 </ul>
 </li>
 <li>Weaknesses:<ul>
 <li>Assumes linear decision boundary;</li>
+<li>Requires a large amount of data to train;</li>
 <li>Cannot decode complex relationships between features;</li>
 </ul>
 </li>
-<li>Reasons for candidacy: The data is clean, and the problem can be considered a boundary classification problem, both of which re favorable conditions for logistic regression.</li>
+<li>Reasons for candidacy: The data is clean, and the problem can be considered a boundary classification problem, both of which re favorable conditions for logistic regression.Logistic regression is easy to apply, and a solid baseline to compare other more complex methods to. It is widely used in industries and is typically one of the first models to start with. Compared to other algorithms, this one has a high bias and low variance.</li>
 </ul>
 
 </div>
@@ -12933,8 +12936,11 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
+<p>In this situation, we are attempting to predict whether an individual makes over $50k based on census data in order to reach out to these people for charitable donations. Because it is costly to reach out to people you do not have the means to donate, accuracy - being sure that someone who the model tells us to reach out to **actually** makes more than $50k - is more important that finding all the people is in the income bracket.</p>
 <p>Gradient Boosting Classifier works by combining several simple learners (here: decision trees), to create an ensemble of learners that can predict whether an individual earns above 50k. Each of the learners are created using different individual “features” like race, sex, education... thereby figuring out a set of rules that can predict a person’s income.</p>
-<p>During the training process, the algorithm looks at instances where it has predicted badly (weak learners), and prioritizes the correct prediction of those instances in the next round of training. With each round, the model finds the best learner (or decision tree) to incorporate into the ensemble, repeating the process for the specified number of rounds, or until the predictions cannot be further proven. All the learners are then combined to make a final ensembled model, where they each vote to predict if a person earns more than 50k or not. Usually this is a democratic process and we take the majority of the votes to make a final prediction. Using this model with census data, we can enter characteristics for a potential new donor and predict if they earn more than 50K or not, and thus determine the likeliness of them donating to charity.</p>
+<p>Put more simply, what is interesting about this model is that weak learners - things that aren't apparently related - are merged together to create a strong predictor. Gradient boosting learns from weak learners until model performance reaches an optimum level.</p>
+<p>For example, imagine you have a friend - Arthur - who is pretty good at predicting someone's age. Arthur would be the first decision tree. But your friend Billy notices that Arthur is usually off by 3 years when Arthur predicts the age for men. So Billy corrects Arthur. Billy isn't predicting someone's age - Arthur is - but Billy tells everyone that talks to Arthur to make sure to subtract 3 years from Arthur's prediction when predicting the age of men. Now, Cathy comes along and notices that Arthur and Billy are off by about 5 years whenever they predict the age of men between the ages of 50 and 75. So Cathy tells everyone that when Arthur predicts the age of men between the age of 50 and 75, you need to subtract three years (Billy's observation) and add 5 years. Again, Cathy is not actually predicting the age - Arthur is - but is making corrections. This is similar to how gradient boosting works.</p>
+<p>From a more technical perspective: During the training process, the algorithm looks at instances where it has predicted badly (weak learners), and prioritizes the correct prediction of those instances in the next round of training. With each round, the model finds the best learner (or decision tree) to incorporate into the ensemble, repeating the process for the specified number of rounds, or until the predictions cannot be further proven. All the learners are then combined to make a final ensembled model, where they each vote to predict if a person earns more than 50k or not. Usually this is a democratic process and we take the majority of the votes to make a final prediction. Using this model with census data, we can enter characteristics for a potential new donor and predict if they earn more than 50K or not, and thus determine the likeliness of them donating to charity.</p>
 
 </div>
 </div>
@@ -13305,7 +13311,7 @@ F-score on testing data: 0.7257
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> The F-score and accuracy reduced with less features. If training time was a factor, I would still not reduce the data as the time savings is not significant enough to compensate for the loss in accuracy and to the F-score.</p>
+<p><strong>Answer:</strong> The F-score and accuracy reduced with less features. If training time was a factor, I would still not reduce the data as the time savings is not significant enough to compensate for the loss in accuracy and to the F-score, but would instead use a simpler model.</p>
 
 </div>
 </div>
