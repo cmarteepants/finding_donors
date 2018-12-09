@@ -17,7 +17,7 @@ git clone https://github.com/cmarteepants/finding_donors.git
 
 You will also need to have jupyter installed to run and execute an [iPython Notebook](http://ipython.org/notebook.html)
 
-To install the libraries, navigate to the top-level project directory 'finding_donors/' and run the following command:
+To install the libraries, navigate to the top-level project directory `finding_donors/` and run the following command:
 
 ```bash
 pip install -r requirements.txt
