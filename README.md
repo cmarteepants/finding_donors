@@ -1,5 +1,4 @@
-# Data Scientist Nanodegree Project: Finding Donors for CharityML
----
+# Data Scientist ND Project: Finding Donors for CharityML
 ## Install
 
 This project requires **Python 3.x** and the following Python libraries installed:
